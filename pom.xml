@@ -6,10 +6,27 @@
     <groupId>com.gxw</groupId>
     <artifactId>springcloud</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.5.RELEASE</version>
+    </parent>
     <modules>
         <module>springcloud-api</module>
         <module>springcloud-provider-dept-8001</module>
     </modules>
+
+    <!-- 打包方式 pom-->
+    <packaging>pom</packaging>
+    <!--版本号 -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <junit.version>4.12</junit.version>
+        <lombok.version>1.16.18</lombok.version>
+        <log4j.version>1.2.17</log4j.version>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -32,29 +49,19 @@
             <version>1.2</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>5.1.3.RELEASE</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>2.1.1.RELEASE</version>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
     </dependencies>
 
-    <!-- 打包方式 pom-->
-    <packaging>pom</packaging>
-    <!--版本号 -->
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <junit.version>4.12</junit.version>
-        <lombok.version>1.16.18</lombok.version>
-        <log4j.version>1.2.17</log4j.version>
-    </properties>
     <dependencyManagement>
         <dependencies>
             <!--springcloud依赖-->
@@ -77,12 +84,12 @@
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>5.1.47</version>
+                <version>8.0.11</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
-                <version>1.1.16</version>
+                <version>1.0.29</version>
             </dependency>
             <!--springboot启动器-->
             <dependency>
@@ -127,5 +134,12 @@
         </repository>
     </repositories>
 
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
